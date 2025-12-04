@@ -109,14 +109,6 @@
         </button>
       @endif
 
-      <a href="{{ route('reportes.index') }}" class="panel-item" style="text-decoration: none; color: inherit;">
-        <span class="panel-icono panel-icono-report">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Zm0 2v16h12V9h-5V4H6Zm7 0v3h3Z" />
-          </svg>
-        </span>
-        <span>Reportes</span>
-      </a>
 
       <a href="{{ route('reports') }}" class="panel-item" style="text-decoration: none; color: inherit;">
         <span class="panel-icono panel-icono-report">
