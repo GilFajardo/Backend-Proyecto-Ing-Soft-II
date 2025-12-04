@@ -186,6 +186,17 @@
                 <span>Admin</span>
               </button>
 
+              @if(Auth::user()->rol === 'capturista')
+              <a href="{{ route('capturista.casos') }}" class="panel-item" style="text-decoration: none; color: inherit;">
+                <span class="panel-icono">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M9 3V2h6v1h4a2 2 0 0 1 2 2v4H3V5a2 2 0 0 1 2-2h4Zm12 7H3v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-9Z" />
+                  </svg>
+                </span>
+                <span>Mis Casos</span>
+              </a>
+              @endif
+
               <button class="panel-item" type="button">
                 <span class="panel-icono plus">
                   <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -204,6 +215,16 @@
                 <span>New user</span>
               </button>
 
+              @if(Auth::user()->rol === 'capturista')
+              <button class="panel-item" type="button" onclick="window.location.href='{{ route('capturista.casos') }}'">
+                <span class="panel-icono panel-icono-evidence">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M10 2a6 6 0 0 1 4.8 9.6l4.8 4.8-1.4 1.4-4.8-4.8A6 6 0 1 1 10 2Zm0 2a4 4 0 1 0 4 4 4.005 4.005 0 0 0-4-4Z" />
+                  </svg>
+                </span>
+                <span>Evidence</span>
+              </button>
+              @else
               <button class="panel-item" type="button">
                 <span class="panel-icono panel-icono-evidence">
                   <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -212,6 +233,7 @@
                 </span>
                 <span>Evidence</span>
               </button>
+              @endif
 
               <button class="panel-item" type="button">
                 <span class="panel-icono panel-icono-report">

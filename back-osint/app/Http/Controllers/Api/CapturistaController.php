@@ -31,17 +31,24 @@ class CapturistaController extends Controller
         try {
             $usuario = Auth::user();
             
+            \Illuminate\Support\Facades\Log::info('CapturistaController: getCasosAsignados called');
+            
             if (!$usuario) {
+                \Illuminate\Support\Facades\Log::warning('CapturistaController: Usuario no autenticado');
                 return response()->json([
                     'success' => false,
                     'message' => 'Usuario no autenticado'
                 ], 401);
             }
 
+            \Illuminate\Support\Facades\Log::info('CapturistaController: Usuario autenticado', ['id' => $usuario->id_usuario, 'usuario' => $usuario->usuario]);
+
             // Obtener casos asignados al usuario
             $asignaciones = AsignacionCaso::with(['caso.creador', 'caso.evidencias'])
                 ->where('id_usuario', $usuario->id_usuario)
                 ->get();
+                
+            \Illuminate\Support\Facades\Log::info('CapturistaController: Asignaciones encontradas', ['count' => $asignaciones->count()]);
 
             $casos = $asignaciones->map(function ($asignacion) {
                 $caso = $asignacion->caso;
