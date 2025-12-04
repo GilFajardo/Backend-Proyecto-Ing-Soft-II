@@ -91,4 +91,41 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/reportes/{nombreArchivo}/descargar', [CapturistaController::class, 'descargarReporte']);
         });
     });
+
+    // -------------------------------------------------------
+    // Módulo Consultor (Middleware específico)
+    // -------------------------------------------------------
+    Route::middleware(['consultor'])->prefix('consultor')->group(function () {
+
+        // Vista principal (dashboard del consultor)
+        Route::get('/inicio', function () {
+            return view('consultor.inicio');
+        })->name('consultor.inicio');
+
+        // Más rutas para consultor aquí, si las agregas luego.
+        // ⭐ Lista de usuarios activos
+        Route::get('/usuarios/lista-usuarios', function () {
+            return view('consultor.usuarios.lista-usuarios');
+        })->name('consultor.usuarios.lista-usuarios');
+
+        //Lista detalle usuario
+        Route::get('/usuarios/detalle-usuario', function () {
+            return view('consultor.usuarios.detalle-usuario');
+        })->name('consultor.usuarios.detalle-usuario');
+
+        // Lista de casos
+        Route::get('/casos/lista-casos', function () {
+            return view('consultor.casos.lista-casos');
+        })->name('consultor.casos.lista-casos');
+
+        // Detalle de caso
+        Route::get('/casos/detalle-caso', function () {
+            return view('consultor.casos.detalle-caso');
+        })->name('consultor.casos.detalle-caso');
+
+
+
+    
+    });
+
 });
